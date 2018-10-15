@@ -13,6 +13,19 @@
     <button id="reseter">Reset the Bomb</button>
 
     <script>
+        var detonationTimer = 10;
+               var max = 0
+               var interval = 1000;
+               function updateTimer() {
+                   if (detonationTimer == max) {
+                       alert('Oops!');
+                       document.body.innerHTML = "The bomb exploded.";
+                       clearInterval(intervalId);
+                   } else if (detonationTimer > max) {
+                       document.getElementById('timer').innerHTML = detonationTimer;
+                   }
+                   detonationTimer --;
+               }
     </script>
 </body>
 </html>
