@@ -26,6 +26,42 @@
                    }
                    detonationTimer --;
                }
+        var intervalId = setInterval(updateTimer, interval);
+        function defuseTheBomb() {
+            if (detonationTimer) {
+                clearInterval(intervalId);
+                alert("BOM DEFUSED")
+            }
+        }
+        function resumeTheBomb() {
+                if (detonationTimer == max) {
+                    alert('Oops!!');
+                    document.body.innerHTML = 'The bomb exploded.';
+                    clearInterval(intervalId);
+                } else if (detonationTimer > max) {
+                    document.getElementById('timer').innerHTML = detonationTimer;
+                    intervalId = setInterval(updateTimer, interval);
+                }
+            detonationTimer --;
+        }
+        function resetTheBomb(){
+            if (detonationTimer) {
+                clearInterval(intervalId);
+                detonationTimer = 10;
+                intervalId = setInterval(updateTimer, interval);
+                alert("BOM reset");
+            };
+        }
+        //var target = document.getElementById/ClassName/TagName("element id from top of page");
+        //target.addEventListener(event trigger, function to be called, false)
+        var defuser = document.getElementById('defuser');
+        defuser.addEventListener('click', defuseTheBomb, false);
+        var resumer = document.getElementById('resumer');
+        resumer.addEventListener("click", resumeTheBomb,
+        false);
+        var reseter = document.getElementById('reseter');
+        reseter.addEventListener("click", resetTheBomb,
+        false);
     </script>
 </body>
 </html>
